@@ -1,0 +1,649 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20262.26.0603.1643                               -->
+<workbook original-version='18.1' source-build='2026.2.0 (20262.26.0603.1643)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' inline='true' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='ryeybws-io82578.snowflakecomputing.com' name='snowflake.13ipslm1bv7z55164pn170k0w5xg'>
+            <connection authentication='Username Password' class='snowflake' dbname='CRYPTO_DB' max-varchar-size='' odbc-connect-string-extras='' one-time-sql='' schema='ANALYTICS' server='ryeybws-io82578.snowflakecomputing.com' service='' temp-table-detection='optimized' username='FATIMAEZZAHRA' warehouse='COMPUTE_WH' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='DIM_CRYPTO' table='[CRYPTO_DB].[ANALYTICS].[DIM_CRYPTO]' type='table' />
+          <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='FACT_MARKET' table='[CRYPTO_DB].[ANALYTICS].[FACT_MARKET]' type='table' />
+          <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='DIM_DATE' table='[CRYPTO_DB].[ANALYTICS].[DIM_DATE]' type='table' />
+        </relation>
+        <cols>
+          <map key='[CRYPTO_ID (FACT_MARKET)]' value='[FACT_MARKET].[CRYPTO_ID]' />
+          <map key='[CRYPTO_ID]' value='[DIM_CRYPTO].[CRYPTO_ID]' />
+          <map key='[CURRENT_PRICE]' value='[FACT_MARKET].[CURRENT_PRICE]' />
+          <map key='[DATE_ID (DIM_DATE)]' value='[DIM_DATE].[DATE_ID]' />
+          <map key='[DATE_ID]' value='[FACT_MARKET].[DATE_ID]' />
+          <map key='[DAY]' value='[DIM_DATE].[DAY]' />
+          <map key='[FACT_ID]' value='[FACT_MARKET].[FACT_ID]' />
+          <map key='[FULL_DATE]' value='[DIM_DATE].[FULL_DATE]' />
+          <map key='[HIGH_24H]' value='[FACT_MARKET].[HIGH_24H]' />
+          <map key='[LOW_24H]' value='[FACT_MARKET].[LOW_24H]' />
+          <map key='[MARKET_CAP]' value='[FACT_MARKET].[MARKET_CAP]' />
+          <map key='[MONTH]' value='[DIM_DATE].[MONTH]' />
+          <map key='[NAME]' value='[DIM_CRYPTO].[NAME]' />
+          <map key='[PRICE_CHANGE_PERCENTAGE_24H]' value='[FACT_MARKET].[PRICE_CHANGE_PERCENTAGE_24H]' />
+          <map key='[SYMBOL]' value='[DIM_CRYPTO].[SYMBOL]' />
+          <map key='[TOTAL_VOLUME]' value='[FACT_MARKET].[TOTAL_VOLUME]' />
+          <map key='[YEAR]' value='[DIM_DATE].[YEAR]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>CRYPTO_ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CRYPTO_ID]</local-name>
+            <parent-name>[DIM_CRYPTO]</parent-name>
+            <remote-alias>CRYPTO_ID</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16777216</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NAME</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[NAME]</local-name>
+            <parent-name>[DIM_CRYPTO]</parent-name>
+            <remote-alias>NAME</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16777216</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SYMBOL</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[SYMBOL]</local-name>
+            <parent-name>[DIM_CRYPTO]</parent-name>
+            <remote-alias>SYMBOL</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16777216</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FACT_ID</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[FACT_ID]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>FACT_ID</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CRYPTO_ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CRYPTO_ID (FACT_MARKET)]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>CRYPTO_ID</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16777216</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DATE_ID</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[DATE_ID]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>DATE_ID</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CURRENT_PRICE</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[CURRENT_PRICE]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>CURRENT_PRICE</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HIGH_24H</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[HIGH_24H]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>HIGH_24H</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LOW_24H</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[LOW_24H]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>LOW_24H</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_VOLUME</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[TOTAL_VOLUME]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>TOTAL_VOLUME</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MARKET_CAP</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[MARKET_CAP]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>MARKET_CAP</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PRICE_CHANGE_PERCENTAGE_24H</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[PRICE_CHANGE_PERCENTAGE_24H]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>PRICE_CHANGE_PERCENTAGE_24H</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DATE_ID</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[DATE_ID (DIM_DATE)]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>DATE_ID</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FULL_DATE</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[FULL_DATE]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>FULL_DATE</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>YEAR</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[YEAR]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>YEAR</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MONTH</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[MONTH]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>MONTH</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DAY</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[DAY]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>DAY</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Crypto Id (Fact Market)' datatype='string' name='[CRYPTO_ID (FACT_MARKET)]' role='dimension' type='nominal' />
+      <column caption='Crypto Id' datatype='string' name='[CRYPTO_ID]' role='dimension' type='nominal' />
+      <column caption='Current Price' datatype='real' name='[CURRENT_PRICE]' role='measure' type='quantitative' />
+      <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+      </column>
+      <column caption='Calcul 1' datatype='real' hidden='true' name='[Calculation_1614371862740998]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='' />
+      </column>
+      <column caption='ratio volume / market cap' datatype='real' name='[Calculation_1614371864928267]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='sum([TOTAL_VOLUME])/sum([MARKET_CAP])' />
+      </column>
+      <column caption=' variation de prix sur 7 jours' datatype='real' name='[Calculation_1614371865165836]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='(SUM([CURRENT_PRICE]) - LOOKUP(SUM([CURRENT_PRICE]), 7)) / LOOKUP(SUM([CURRENT_PRICE]), 7)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Date Id (Dim Date)' datatype='integer' name='[DATE_ID (DIM_DATE)]' role='dimension' type='ordinal' />
+      <column caption='Date Id' datatype='integer' name='[DATE_ID]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[DAY]' role='dimension' type='quantitative' />
+      <column caption='Fact Id' datatype='integer' name='[FACT_ID]' role='dimension' type='ordinal' />
+      <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+      <column caption='High 24H' datatype='real' name='[HIGH_24H]' role='measure' type='quantitative' />
+      <column caption='Low 24H' datatype='real' name='[LOW_24H]' role='measure' type='quantitative' />
+      <column caption='Market Cap' datatype='real' name='[MARKET_CAP]' role='measure' type='quantitative' />
+      <column caption='Month' datatype='integer' name='[MONTH]' role='dimension' type='quantitative' />
+      <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+      <column caption='Price Change Percentage 24H' datatype='real' name='[PRICE_CHANGE_PERCENTAGE_24H]' role='measure' type='quantitative' />
+      <column caption='Symbol' datatype='string' name='[SYMBOL]' role='dimension' type='nominal' />
+      <column caption='Year' datatype='integer' name='[YEAR]' role='dimension' type='quantitative' />
+      <column caption='DIM_CRYPTO' datatype='table' name='[__tableau_internal_object_id__].[DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C]' role='measure' type='quantitative' />
+      <column caption='DIM_DATE' datatype='table' name='[__tableau_internal_object_id__].[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]' role='measure' type='quantitative' />
+      <column caption='FACT_MARKET' datatype='table' name='[__tableau_internal_object_id__].[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]' role='measure' type='quantitative' />
+      <drill-paths>
+        <drill-path name='Date Hierarchy'>
+          <field>[YEAR]</field>
+          <field>[MONTH]</field>
+          <field>[Calculation_1614371859709956]</field>
+          <field>[DAY]</field>
+        </drill-path>
+      </drill-paths>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Maroc&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='DIM_CRYPTO' id='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C'>
+            <properties context=''>
+              <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='DIM_CRYPTO' table='[CRYPTO_DB].[ANALYTICS].[DIM_CRYPTO]' type='table' />
+            </properties>
+          </object>
+          <object caption='DIM_DATE' id='DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC'>
+            <properties context=''>
+              <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='DIM_DATE' table='[CRYPTO_DB].[ANALYTICS].[DIM_DATE]' type='table' />
+            </properties>
+          </object>
+          <object caption='FACT_MARKET' id='FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE'>
+            <properties context=''>
+              <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='FACT_MARKET' table='[CRYPTO_DB].[ANALYTICS].[FACT_MARKET]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[DATE_ID]' />
+              <expression op='[DATE_ID (DIM_DATE)]' />
+            </expression>
+            <first-end-point object-id='FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE' />
+            <second-end-point object-id='DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[CRYPTO_ID]' />
+              <expression op='[CRYPTO_ID (FACT_MARKET)]' />
+            </expression>
+            <first-end-point object-id='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C' />
+            <second-end-point object-id='FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+    <datasource inline='true' name='Clipboard_20260618T124357' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Clipboard_20260618T124357' name='Clipboard_20260618T124357leaf'>
+            <connection class='textscan' directory='C:/Users/user/Documents/Mon dossier Tableau/Sources de données' filename='Clipboard_20260618T124357.txt' />
+          </named-connection>
+        </named-connections>
+      </connection>
+      <aliases enabled='yes' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Maroc&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Feuille 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column caption='Current Price' datatype='real' name='[CURRENT_PRICE]' role='measure' type='quantitative' />
+            <column-instance column='[CURRENT_PRICE]' derivation='Sum' name='[sum:CURRENT_PRICE:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:CURRENT_PRICE:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:CURRENT_PRICE:qk]' x-index='1'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>([federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:CURRENT_PRICE:qk] + [federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:CURRENT_PRICE:qk])</rows>
+        <cols>([federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:CURRENT_PRICE:qk] + [federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:CURRENT_PRICE:qk])</cols>
+      </table>
+      <simple-id uuid='{88A894E2-9DF6-4421-9584-0AA42966CACB}' />
+    </worksheet>
+    <worksheet name='Feuille 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource name='Clipboard_20260618T124357' />
+          </datasources>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{74875DEC-C10D-4B6D-A930-9FE42A3476AB}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='51'>
+    <window class='worksheet' name='Feuille 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{1F4D830F-DF3E-4D8A-811E-A4EB8A46B6B7}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Feuille 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{99DE1254-F294-4E76-8FF2-9A1AD8B86A02}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Feuille 1' width='192'>
+      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
+      Hf8PtfiesmK3SncAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
