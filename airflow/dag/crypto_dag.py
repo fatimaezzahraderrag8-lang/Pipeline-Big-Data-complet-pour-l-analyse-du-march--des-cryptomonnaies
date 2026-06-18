@@ -1,10 +1,15 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from datetime import datetime
+from datetime import datetime, timedelta
 import subprocess
-import os
 
 BASE_DIR = "/opt/airflow/project"
+
+default_args = {
+    "owner": "airflow",
+    "retries": 2,
+    "retry_delay": timedelta(minutes=2),
+}
 
 def ingest_bronze():
     subprocess.run(
@@ -32,6 +37,7 @@ def load_snowflake():
 
 with DAG(
     dag_id="crypto_pipeline",
+    default_args=default_args,
     start_date=datetime(2024, 1, 1),
     schedule="@daily",
     catchup=False,
