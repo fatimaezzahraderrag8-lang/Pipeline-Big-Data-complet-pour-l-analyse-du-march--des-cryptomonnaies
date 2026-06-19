@@ -240,5 +240,6 @@ Projet réalisé dans le cadre de la formation Data Analyst / Data Engineer.
 # 📊 Dashboard
 <img width="986" height="794" alt="image" src="https://github.com/user-attachments/assets/fe5ca089-aabc-4973-b4ee-479e283f8bb5" />
 
-<img width="992" height="791" alt="image" src="https://github.com/user-attachments/assets/829f7f06-ce00-4f14-b5cf-1e8d49428288" />
+<img width="994" height="786" alt="image" src="https://github.com/user-attachments/assets/6322e797-fa1d-412f-9482-6f45085dc28f" />
+
 
