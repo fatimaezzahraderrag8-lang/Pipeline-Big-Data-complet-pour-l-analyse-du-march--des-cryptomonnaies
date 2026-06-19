@@ -1,0 +1,2261 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20262.26.0603.1643                               -->
+<workbook original-version='18.1' source-build='2026.2.0 (20262.26.0603.1643)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='sélection de la crypto' datatype='string' name='[Paramètre 1614371867717646]' param-domain-type='list' role='measure' type='nominal' value='&quot;eth&quot;'>
+        <calculation class='tableau' formula='&quot;eth&quot;' />
+        <members>
+          <member value='&quot;bnb&quot;' />
+          <member value='&quot;btc&quot;' />
+          <member value='&quot;eth&quot;' />
+          <member value='&quot;figr_heloc&quot;' />
+          <member value='&quot;hype&quot;' />
+          <member value='&quot;sol&quot;' />
+          <member value='&quot;trx&quot;' />
+          <member value='&quot;usdc&quot;' />
+          <member value='&quot;usdt&quot;' />
+          <member value='&quot;xrp&quot;' />
+        </members>
+      </column>
+      <column caption='indicateur à afficher' datatype='string' name='[Paramètre 1614371868618768]' param-domain-type='list' role='measure' type='nominal' value='&quot;Current Price&quot;'>
+        <calculation class='tableau' formula='&quot;Current Price&quot;' />
+        <members>
+          <member value='&quot;Current Price&quot;' />
+          <member value='&quot;Total Volume&quot;' />
+          <member value='&quot;Market Cap&quot;' />
+        </members>
+      </column>
+      <column caption='plage de dates' datatype='date' name='[Paramètre 1614371889598483]' param-domain-type='range' role='measure' type='quantitative' value='#2026-06-19#'>
+        <calculation class='tableau' formula='#2026-06-19#' />
+      </column>
+    </datasource>
+    <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' inline='true' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='ryeybws-io82578.snowflakecomputing.com' name='snowflake.13ipslm1bv7z55164pn170k0w5xg'>
+            <connection authentication='Username Password' class='snowflake' dbname='CRYPTO_DB' max-varchar-size='' odbc-connect-string-extras='' one-time-sql='' schema='ANALYTICS' server='ryeybws-io82578.snowflakecomputing.com' service='' temp-table-detection='optimized' username='FATIMAEZZAHRA' warehouse='COMPUTE_WH' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='DIM_CRYPTO' table='[CRYPTO_DB].[ANALYTICS].[DIM_CRYPTO]' type='table' />
+          <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='FACT_MARKET' table='[CRYPTO_DB].[ANALYTICS].[FACT_MARKET]' type='table' />
+          <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='DIM_DATE' table='[CRYPTO_DB].[ANALYTICS].[DIM_DATE]' type='table' />
+        </relation>
+        <cols>
+          <map key='[CRYPTO_ID (FACT_MARKET)]' value='[FACT_MARKET].[CRYPTO_ID]' />
+          <map key='[CRYPTO_ID]' value='[DIM_CRYPTO].[CRYPTO_ID]' />
+          <map key='[CURRENT_PRICE]' value='[FACT_MARKET].[CURRENT_PRICE]' />
+          <map key='[DATE_ID (DIM_DATE)]' value='[DIM_DATE].[DATE_ID]' />
+          <map key='[DATE_ID]' value='[FACT_MARKET].[DATE_ID]' />
+          <map key='[DAY]' value='[DIM_DATE].[DAY]' />
+          <map key='[FACT_ID]' value='[FACT_MARKET].[FACT_ID]' />
+          <map key='[FULL_DATE]' value='[DIM_DATE].[FULL_DATE]' />
+          <map key='[HIGH_24H]' value='[FACT_MARKET].[HIGH_24H]' />
+          <map key='[LOW_24H]' value='[FACT_MARKET].[LOW_24H]' />
+          <map key='[MARKET_CAP]' value='[FACT_MARKET].[MARKET_CAP]' />
+          <map key='[MONTH]' value='[DIM_DATE].[MONTH]' />
+          <map key='[NAME]' value='[DIM_CRYPTO].[NAME]' />
+          <map key='[PRICE_CHANGE_PERCENTAGE_24H]' value='[FACT_MARKET].[PRICE_CHANGE_PERCENTAGE_24H]' />
+          <map key='[SYMBOL]' value='[DIM_CRYPTO].[SYMBOL]' />
+          <map key='[TOTAL_VOLUME]' value='[FACT_MARKET].[TOTAL_VOLUME]' />
+          <map key='[YEAR]' value='[DIM_DATE].[YEAR]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>CRYPTO_ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CRYPTO_ID]</local-name>
+            <parent-name>[DIM_CRYPTO]</parent-name>
+            <remote-alias>CRYPTO_ID</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16777216</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NAME</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[NAME]</local-name>
+            <parent-name>[DIM_CRYPTO]</parent-name>
+            <remote-alias>NAME</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16777216</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SYMBOL</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[SYMBOL]</local-name>
+            <parent-name>[DIM_CRYPTO]</parent-name>
+            <remote-alias>SYMBOL</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16777216</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FACT_ID</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[FACT_ID]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>FACT_ID</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CRYPTO_ID</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CRYPTO_ID (FACT_MARKET)]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>CRYPTO_ID</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16777216</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_VARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_CHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DATE_ID</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[DATE_ID]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>DATE_ID</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CURRENT_PRICE</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[CURRENT_PRICE]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>CURRENT_PRICE</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HIGH_24H</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[HIGH_24H]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>HIGH_24H</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LOW_24H</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[LOW_24H]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>LOW_24H</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_VOLUME</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[TOTAL_VOLUME]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>TOTAL_VOLUME</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MARKET_CAP</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[MARKET_CAP]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>MARKET_CAP</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PRICE_CHANGE_PERCENTAGE_24H</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[PRICE_CHANGE_PERCENTAGE_24H]</local-name>
+            <parent-name>[FACT_MARKET]</parent-name>
+            <remote-alias>PRICE_CHANGE_PERCENTAGE_24H</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <object-id>[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DATE_ID</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[DATE_ID (DIM_DATE)]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>DATE_ID</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FULL_DATE</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[FULL_DATE]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>FULL_DATE</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>YEAR</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[YEAR]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>YEAR</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MONTH</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[MONTH]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>MONTH</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DAY</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[DAY]</local-name>
+            <parent-name>[DIM_DATE]</parent-name>
+            <remote-alias>DAY</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <object-id>[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Crypto Id (Fact Market)' datatype='string' name='[CRYPTO_ID (FACT_MARKET)]' role='dimension' type='nominal' />
+      <column caption='Crypto Id' datatype='string' name='[CRYPTO_ID]' role='dimension' type='nominal' />
+      <column caption='Current Price' datatype='real' name='[CURRENT_PRICE]' role='measure' type='quantitative' />
+      <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+      </column>
+      <column caption='Calcul 1' datatype='real' hidden='true' name='[Calculation_1614371862740998]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='' />
+      </column>
+      <column caption='ratio volume / market cap' datatype='real' name='[Calculation_1614371864928267]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='sum([TOTAL_VOLUME])/sum([MARKET_CAP])' />
+      </column>
+      <column caption=' variation de prix sur 7 jours' datatype='real' name='[Calculation_1614371865165836]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='(SUM([CURRENT_PRICE]) - LOOKUP(SUM([CURRENT_PRICE]), 7)) / LOOKUP(SUM([CURRENT_PRICE]), 7)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='performance relative' datatype='real' name='[Calculation_1614371867316237]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([CURRENT_PRICE])/WINDOW_AVG(SUM([CURRENT_PRICE]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='INDICATEUR DYNAMIQUE' datatype='real' name='[Calculation_1614371869376529]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Indicator]&#13;&#10;WHEN &apos;Price&apos; THEN AVG([CURRENT_PRICE])&#13;&#10;WHEN &apos;Volume&apos; THEN SUM([TOTAL_VOLUME])&#13;&#10;WHEN &apos;Market Cap&apos; THEN SUM([MARKET_CAP])&#13;&#10;END' />
+      </column>
+      <column caption='filtre date' datatype='real' name='[Calculation_1614371890069524]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[FULL_DATE] &gt;= [Date Début] AND [FULL_DATE] &lt;= [Date Fin]' />
+      </column>
+      <column caption='Date Id (Dim Date)' datatype='integer' name='[DATE_ID (DIM_DATE)]' role='dimension' type='ordinal' />
+      <column caption='Date Id' datatype='integer' name='[DATE_ID]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[DAY]' role='dimension' type='quantitative' />
+      <column caption='Fact Id' datatype='integer' name='[FACT_ID]' role='dimension' type='ordinal' />
+      <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+      <column caption='High 24H' datatype='real' name='[HIGH_24H]' role='measure' type='quantitative' />
+      <column caption='Low 24H' datatype='real' name='[LOW_24H]' role='measure' type='quantitative' />
+      <column caption='Market Cap' datatype='real' name='[MARKET_CAP]' role='measure' type='quantitative' />
+      <column caption='Month' datatype='integer' name='[MONTH]' role='dimension' type='quantitative' />
+      <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+      <column caption='Price Change Percentage 24H' datatype='real' name='[PRICE_CHANGE_PERCENTAGE_24H]' role='measure' type='quantitative' />
+      <column caption='Symbol' datatype='string' name='[SYMBOL]' role='dimension' type='nominal' />
+      <column caption='Year' datatype='integer' name='[YEAR]' role='dimension' type='quantitative' />
+      <column caption='DIM_CRYPTO' datatype='table' name='[__tableau_internal_object_id__].[DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C]' role='measure' type='quantitative' />
+      <column caption='DIM_DATE' datatype='table' name='[__tableau_internal_object_id__].[DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC]' role='measure' type='quantitative' />
+      <column caption='FACT_MARKET' datatype='table' name='[__tableau_internal_object_id__].[FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE]' role='measure' type='quantitative' />
+      <column-instance column='[CURRENT_PRICE]' derivation='Avg' name='[avg:CURRENT_PRICE:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1614371859709956]' derivation='None' name='[none:Calculation_1614371859709956:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+      <column-instance column='[FULL_DATE]' derivation='Year-Trunc' name='[tyr:FULL_DATE:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1614371865165836]' derivation='User' name='[usr:Calculation_1614371865165836:qk:1]' pivot='key' type='quantitative'>
+        <table-calc ordering-field='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[tyr:FULL_DATE:qk]' ordering-type='Field' />
+      </column-instance>
+      <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+      <group caption='Action (Name)' hidden='true' name='[Action (Name)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[NAME]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (WEEK,Name)' hidden='true' name='[Action (WEEK,Name)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Calculation_1614371859709956]' />
+          <groupfilter function='level-members' level='[NAME]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (ANNÉE(Full Date),Name)' hidden='true' name='[Action (YEAR(Full Date),Name)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[yr:FULL_DATE:ok]' />
+          <groupfilter function='level-members' level='[NAME]' />
+        </groupfilter>
+      </group>
+      <group hidden='true' name='[Inclusions (Name,WEEK)]' name-style='unqualified' user:auto-column='include'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[none:NAME:nk]' />
+          <groupfilter function='level-members' level='[none:Calculation_1614371859709956:ok]' />
+        </groupfilter>
+      </group>
+      <drill-paths>
+        <drill-path name='Date Hierarchy'>
+          <field>[YEAR]</field>
+          <field>[MONTH]</field>
+          <field>[Calculation_1614371859709956]</field>
+          <field>[DAY]</field>
+        </drill-path>
+      </drill-paths>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[usr:Calculation_1614371865165836:qk:1]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[avg:CURRENT_PRICE:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:NAME:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Bitcoin&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Hyperliquid&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Figure Heloc&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;USDC&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Tether&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;XRP&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Ethereum&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;Solana&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;BNB&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;TRON&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Maroc&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='DIM_CRYPTO' id='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C'>
+            <properties context=''>
+              <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='DIM_CRYPTO' table='[CRYPTO_DB].[ANALYTICS].[DIM_CRYPTO]' type='table' />
+            </properties>
+          </object>
+          <object caption='DIM_DATE' id='DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC'>
+            <properties context=''>
+              <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='DIM_DATE' table='[CRYPTO_DB].[ANALYTICS].[DIM_DATE]' type='table' />
+            </properties>
+          </object>
+          <object caption='FACT_MARKET' id='FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE'>
+            <properties context=''>
+              <relation connection='snowflake.13ipslm1bv7z55164pn170k0w5xg' name='FACT_MARKET' table='[CRYPTO_DB].[ANALYTICS].[FACT_MARKET]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[DATE_ID]' />
+              <expression op='[DATE_ID (DIM_DATE)]' />
+            </expression>
+            <first-end-point object-id='FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE' />
+            <second-end-point object-id='DIM_DATE (CRYPTO_DB.DIM_DATE)_072C9B0F9FF14B7187F95EA1660927AC' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[CRYPTO_ID]' />
+              <expression op='[CRYPTO_ID (FACT_MARKET)]' />
+            </expression>
+            <first-end-point object-id='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)_8054DF9E721C43BFBBED229748AEC46C' />
+            <second-end-point object-id='FACT_MARKET (CRYPTO_DB.FACT_MARKET)_8647822A4C40498F97C7831950F2FADE' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+      <datasources>
+        <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+        <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+        <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+        <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+        <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <filter class='quantitative' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]' included-values='in-range'>
+        <min>#2026-06-18#</min>
+        <max>#2026-06-18#</max>
+      </filter>
+      <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]'>
+        <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;BNB&quot;' />
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;Bitcoin&quot;' />
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;Ethereum&quot;' />
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;Figure Heloc&quot;' />
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;Hyperliquid&quot;' />
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;Solana&quot;' />
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;TRON&quot;' />
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;Tether&quot;' />
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;USDC&quot;' />
+          <groupfilter function='member' level='[none:NAME:nk]' member='&quot;XRP&quot;' />
+        </groupfilter>
+      </filter>
+    </shared-view>
+  </shared-views>
+  <actions>
+    <action caption='Filtrer par Crypto' name='[Action1_73F79DC5FC8D4CD9B2D3F46F5137DE18]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard Principal (vue comparative multi-cryptos)' type='sheet' />
+      <link caption='Filtrer par Crypto' delimiter=',' escape='\' expression='tsl:Dashboard%20Principal%20%28vue%20comparative%20multi-cryptos%29?' include-null='true' multi-select='true' url-escape='true' />
+      <command command='tsc:tsl-filter'>
+        <param name='target' value='Dashboard Principal (vue comparative multi-cryptos)' />
+      </command>
+    </action>
+    <action caption='Filtrer1' name='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard Principal (vue comparative multi-cryptos)' type='sheet' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Dashboard Principal (vue comparative multi-cryptos)' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name=' top 10 cryptos par volume moyen sur la période sélectionnée'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Candara' italic='true' underline='true'>top 10 cryptos par volume moyen sur la période sélectionnée</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+            </column>
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column caption='Price Change Percentage 24H' datatype='real' name='[PRICE_CHANGE_PERCENTAGE_24H]' role='measure' type='quantitative' />
+            <column datatype='real' name='[TOTAL_VOLUME]' role='measure' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PRICE_CHANGE_PERCENTAGE_24H]' derivation='Sum' name='[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[TOTAL_VOLUME]' derivation='Sum' name='[sum:TOTAL_VOLUME:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_1614371859709956]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[yr:FULL_DATE:ok]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='669' />
+                <format attr='maxwidth' value='669' />
+                <format attr='minheight' value='200' />
+                <format attr='maxheight' value='200' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</rows>
+        <cols>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:TOTAL_VOLUME:qk]</cols>
+      </table>
+      <simple-id uuid='{B5780915-04D1-4F89-8D28-AD38FBBD92B0}' />
+    </worksheet>
+    <worksheet name=' évolution du prix de clôture dans le temps par crypto'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#000000' fontname='Calibri' fontsize='18' italic='true' underline='true'>évolution du prix de clôture dans le temps par crypto</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column caption='Current Price' datatype='real' name='[CURRENT_PRICE]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+            </column>
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column-instance column='[CURRENT_PRICE]' derivation='Avg' name='[avg:CURRENT_PRICE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[FULL_DATE]' derivation='Quarter' name='[qr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]'>
+            <groupfilter function='level-members' level='[NAME]' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_1614371859709956]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='width' field='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[avg:CURRENT_PRICE:qk]' value='60' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='height' field='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[yr:FULL_DATE:ok]' value='10' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#f28e2b' />
+                <format attr='size' value='2' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[avg:CURRENT_PRICE:qk]</rows>
+        <cols>([federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[yr:FULL_DATE:ok] / [federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[qr:FULL_DATE:ok])</cols>
+      </table>
+      <simple-id uuid='{C14A2A28-EA25-4710-B887-165A3F3F7FD0}' />
+    </worksheet>
+    <worksheet name='Feuille 9'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontname='Calibri' fontsize='18' italic='true' underline='true'>Informations détaillée</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column caption='Current Price' datatype='real' name='[CURRENT_PRICE]' role='measure' type='quantitative' />
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='High 24H' datatype='real' name='[HIGH_24H]' role='measure' type='quantitative' />
+            <column caption='Low 24H' datatype='real' name='[LOW_24H]' role='measure' type='quantitative' />
+            <column caption='Market Cap' datatype='real' name='[MARKET_CAP]' role='measure' type='quantitative' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column caption='Price Change Percentage 24H' datatype='real' name='[PRICE_CHANGE_PERCENTAGE_24H]' role='measure' type='quantitative' />
+            <column caption='Symbol' datatype='string' name='[SYMBOL]' role='dimension' type='nominal' />
+            <column datatype='real' name='[TOTAL_VOLUME]' role='measure' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[SYMBOL]' derivation='None' name='[none:SYMBOL:nk]' pivot='key' type='nominal' />
+            <column-instance column='[CURRENT_PRICE]' derivation='Sum' name='[sum:CURRENT_PRICE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[HIGH_24H]' derivation='Sum' name='[sum:HIGH_24H:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LOW_24H]' derivation='Sum' name='[sum:LOW_24H:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[MARKET_CAP]' derivation='Sum' name='[sum:MARKET_CAP:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[PRICE_CHANGE_PERCENTAGE_24H]' derivation='Sum' name='[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[TOTAL_VOLUME]' derivation='Sum' name='[sum:TOTAL_VOLUME:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:CURRENT_PRICE:qk]' />
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:HIGH_24H:qk]' />
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:LOW_24H:qk]' />
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:MARKET_CAP:qk]' />
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' />
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:TOTAL_VOLUME:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk] / [federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:SYMBOL:nk])</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{777177D0-D516-4C90-AC40-2ADD9617B7AE}' />
+    </worksheet>
+    <worksheet name='KPI 1 :Prix Actuel'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontname='Calibri' fontsize='10' italic='true'>KPI Prix Actuel</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column caption='Current Price' datatype='real' name='[CURRENT_PRICE]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+            </column>
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[CURRENT_PRICE]' derivation='Sum' name='[sum:CURRENT_PRICE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]'>
+            <groupfilter function='level-members' level='[NAME]' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_1614371859709956]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[yr:FULL_DATE:ok]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#b07aa1' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:CURRENT_PRICE:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>&lt;</run>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:CURRENT_PRICE:qk]</run>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-orientation' value='0' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{22F551E6-A373-41FB-B96D-92360199A0EC}' />
+    </worksheet>
+    <worksheet name='KPI 2 :Variation 24h'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#000000' fontname='Calibri' fontsize='10' italic='true'>Variation 24h</run>
+            <run>Æ&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+            </column>
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column caption='Price Change Percentage 24H' datatype='real' name='[PRICE_CHANGE_PERCENTAGE_24H]' role='measure' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PRICE_CHANGE_PERCENTAGE_24H]' derivation='Sum' name='[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]'>
+            <groupfilter function='level-members' level='[NAME]' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_1614371859709956]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[yr:FULL_DATE:ok]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#b07aa1' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>&lt;</run>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]</run>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{943B3533-5181-4D65-8EE0-B4150E1DDB3C}' />
+    </worksheet>
+    <worksheet name='KPI 3 : Volume Total'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#000000' fontname='Calibri' fontsize='10' italic='true'>Volume Total</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+            </column>
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column datatype='real' name='[TOTAL_VOLUME]' role='measure' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[TOTAL_VOLUME]' derivation='Sum' name='[sum:TOTAL_VOLUME:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]'>
+            <groupfilter function='level-members' level='[NAME]' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_1614371859709956]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[yr:FULL_DATE:ok]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#b07aa1' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:TOTAL_VOLUME:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>&lt;</run>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:TOTAL_VOLUME:qk]</run>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{2B1DA453-5159-4A01-84BB-68F4F2D9BD8C}' />
+    </worksheet>
+    <worksheet name='KPI 4 : Market Cap'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#000000' fontname='Calibri' fontsize='10' italic='true'>Market Cap</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+            </column>
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='Market Cap' datatype='real' name='[MARKET_CAP]' role='measure' type='quantitative' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[MARKET_CAP]' derivation='Sum' name='[sum:MARKET_CAP:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]'>
+            <groupfilter function='level-members' level='[NAME]' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_1614371859709956]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[yr:FULL_DATE:ok]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#b07aa1' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:MARKET_CAP:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>&lt;</run>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:MARKET_CAP:qk]</run>
+                <run bold='true' fontcolor='#f28e2b' fontsize='14' italic='true'>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{D9A44C8B-A9BE-489F-8C0E-76DFA07B2586}' />
+    </worksheet>
+    <worksheet name='Variation journalière'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#000000' fontname='Calibri' fontsize='18' italic='true' underline='true'>Variation journalière</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column caption='Price Change Percentage 24H' datatype='real' name='[PRICE_CHANGE_PERCENTAGE_24H]' role='measure' type='quantitative' />
+            <column-instance column='[PRICE_CHANGE_PERCENTAGE_24H]' derivation='Avg' name='[avg:PRICE_CHANGE_PERCENTAGE_24H:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#c87208' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[avg:PRICE_CHANGE_PERCENTAGE_24H:qk]</rows>
+        <cols>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[yr:FULL_DATE:ok]</cols>
+      </table>
+      <simple-id uuid='{9999C5ED-7407-4F25-9B24-31E2EC736754}' />
+    </worksheet>
+    <worksheet name='corrélation volume vs variation de prix '>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#000000' fontname='Calibri' fontsize='18' italic='true' underline='true'>corrélation volume vs variation de prix </run>
+            <run>Æ&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+            </column>
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column caption='Price Change Percentage 24H' datatype='real' name='[PRICE_CHANGE_PERCENTAGE_24H]' role='measure' type='quantitative' />
+            <column datatype='real' name='[TOTAL_VOLUME]' role='measure' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PRICE_CHANGE_PERCENTAGE_24H]' derivation='Sum' name='[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[TOTAL_VOLUME]' derivation='Sum' name='[sum:TOTAL_VOLUME:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]'>
+            <groupfilter function='level-members' level='[NAME]' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_1614371859709956]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[yr:FULL_DATE:ok]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (WEEK,Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]</rows>
+        <cols>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:TOTAL_VOLUME:qk]</cols>
+      </table>
+      <simple-id uuid='{FD94533B-B7FC-4720-894C-419B2202B726}' />
+    </worksheet>
+    <worksheet name='variation journalière par crypto et par semaine'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#000000' fontname='Calibri' fontsize='18' italic='true' underline='true'>variation journalière par crypto et par semaine</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mjg3uf1eofotc1g6rfof1p3z4ze'>
+            <column aggregation='Sum' caption='WEEK' datatype='integer' name='[Calculation_1614371859709956]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATEPART(&apos;week&apos;, [FULL_DATE])' />
+            </column>
+            <column caption='Full Date' datatype='date' name='[FULL_DATE]' role='dimension' type='ordinal' />
+            <column caption='Name' datatype='string' name='[NAME]' role='dimension' type='nominal' />
+            <column caption='Price Change Percentage 24H' datatype='real' name='[PRICE_CHANGE_PERCENTAGE_24H]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_1614371859709956]' derivation='None' name='[none:Calculation_1614371859709956:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[FULL_DATE]' derivation='None' name='[none:FULL_DATE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NAME]' derivation='None' name='[none:NAME:nk]' pivot='key' type='nominal' />
+            <column-instance column='[PRICE_CHANGE_PERCENTAGE_24H]' derivation='Sum' name='[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[FULL_DATE]' derivation='Year' name='[yr:FULL_DATE:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]'>
+            <groupfilter function='level-members' level='[NAME]' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action2_D1ED35FDC18746FC93793E5BCE20AF94]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[yr:FULL_DATE:ok]' />
+              <groupfilter function='level-members' level='[NAME]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:FULL_DATE:qk]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (Name)]</column>
+            <column>[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[Action (YEAR(Full Date),Name)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='cell-w' value='20' />
+            <format attr='cell-h' value='20' />
+            <format attr='cell' value='20' />
+            <format attr='cell-q' value='100' />
+            <format attr='width' value='378' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='height-header' value='17' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+            <encoding attr='color' field='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' palette='orange_blue_diverging_10_0' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.7999999523162842' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:Calculation_1614371859709956:ok] / [federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk])</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{D49EE4F0-7183-476E-9B2E-588A596FEEB9}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard Détail'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Corbel' fontsize='36' italic='true'>Dashboard Détail</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='Paramètres' name='Parameters' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='sélection de la crypto' datatype='string' name='[Paramètre 1614371867717646]' param-domain-type='list' role='measure' type='nominal' value='&quot;eth&quot;'>
+          <calculation class='tableau' formula='&quot;eth&quot;' />
+          <members>
+            <member value='&quot;bnb&quot;' />
+            <member value='&quot;btc&quot;' />
+            <member value='&quot;eth&quot;' />
+            <member value='&quot;figr_heloc&quot;' />
+            <member value='&quot;hype&quot;' />
+            <member value='&quot;sol&quot;' />
+            <member value='&quot;trx&quot;' />
+            <member value='&quot;usdc&quot;' />
+            <member value='&quot;usdt&quot;' />
+            <member value='&quot;xrp&quot;' />
+          </members>
+        </column>
+        <column caption='indicateur à afficher' datatype='string' name='[Paramètre 1614371868618768]' param-domain-type='list' role='measure' type='nominal' value='&quot;Current Price&quot;'>
+          <calculation class='tableau' formula='&quot;Current Price&quot;' />
+          <members>
+            <member value='&quot;Current Price&quot;' />
+            <member value='&quot;Total Volume&quot;' />
+            <member value='&quot;Market Cap&quot;' />
+          </members>
+        </column>
+        <column caption='plage de dates' datatype='date' name='[Paramètre 1614371889598483]' param-domain-type='range' role='measure' type='quantitative' value='#2026-06-19#'>
+          <calculation class='tableau' formula='#2026-06-19#' />
+        </column>
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='20' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='207' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='8375' id='208' type-v2='title' w='98400' x='800' y='1000'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='89625' id='201' param='horz' type-v2='layout-flow' w='98400' x='800' y='9375'>
+              <zone h='89625' id='199' type-v2='layout-basic' w='85700' x='800' y='9375'>
+                <zone h='22404' id='98' param='horz' type-v2='layout-flow' w='85700' x='800' y='9375'>
+                  <zone h='22404' id='25' type-v2='layout-basic' w='85700' x='800' y='9375'>
+                    <zone h='22404' id='19' name='KPI 1 :Prix Actuel' w='23684' x='800' y='9375'>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                    <zone h='22404' id='21' name='KPI 2 :Variation 24h' w='19683' x='24484' y='9375'>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                    <zone h='22404' id='22' name='KPI 3 : Volume Total' w='22470' x='44167' y='9375'>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                    <zone h='22404' id='23' name='KPI 4 : Market Cap' w='19863' x='66637' y='9375'>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                  </zone>
+                </zone>
+                <zone h='44813' id='197' name='Variation journalière' w='39500' x='47000' y='54187'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='22408' id='198' name=' évolution du prix de clôture dans le temps par crypto' w='85700' x='800' y='31779'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='44813' id='241' name='Feuille 9' w='46200' x='800' y='54187'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone fixed-size='127' h='89625' id='200' is-fixed='true' param='vert' type-v2='layout-flow' w='12700' x='86500' y='9375'>
+                <zone fixed-size='235' h='22406' id='202' is-fixed='true' name=' évolution du prix de clôture dans le temps par crypto' pane-specification-id='0' param='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]' type-v2='color' w='12700' x='86500' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='231' h='22406' id='203' is-fixed='true' mode='compact' param='[Parameters].[Paramètre 1614371868618768]' type-v2='paramctrl' w='12700' x='86500' y='31781'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='205' h='22406' id='204' is-fixed='true' mode='datetime' param='[Parameters].[Paramètre 1614371889598483]' type-v2='paramctrl' w='12700' x='86500' y='54187'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='347' h='22407' id='205' is-fixed='true' mode='compact' param='[Parameters].[Paramètre 1614371867717646]' type-v2='paramctrl' w='12700' x='86500' y='76593'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Corbel' fontsize='36' italic='true'>Dashboard Détail</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='1850' minheight='1850' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='249' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='248' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+                <zone h='8375' id='208' type-v2='title' w='98400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='171' h='22404' id='19' is-fixed='true' name='KPI 1 :Prix Actuel' w='23684' x='800' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='171' h='22404' id='21' is-fixed='true' name='KPI 2 :Variation 24h' w='19683' x='24484' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='171' h='22404' id='22' is-fixed='true' name='KPI 3 : Volume Total' w='22470' x='44167' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='171' h='22404' id='23' is-fixed='true' name='KPI 4 : Market Cap' w='19863' x='66637' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='171' h='22408' id='198' is-fixed='true' name=' évolution du prix de clôture dans le temps par crypto' w='85700' x='800' y='31779'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='235' h='22406' id='202' name=' évolution du prix de clôture dans le temps par crypto' pane-specification-id='0' param='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]' type-v2='color' w='12700' x='86500' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='231' h='22406' id='203' mode='compact' param='[Parameters].[Paramètre 1614371868618768]' type-v2='paramctrl' w='12700' x='86500' y='31781'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='44813' id='241' is-fixed='true' name='Feuille 9' w='46200' x='800' y='54187'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='44813' id='197' is-fixed='true' name='Variation journalière' w='39500' x='47000' y='54187'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='205' h='22406' id='204' mode='datetime' param='[Parameters].[Paramètre 1614371889598483]' type-v2='paramctrl' w='12700' x='86500' y='54187'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='347' h='22407' id='205' mode='compact' param='[Parameters].[Paramètre 1614371867717646]' type-v2='paramctrl' w='12700' x='86500' y='76593'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{417B8661-D996-44BC-89F7-263EAA9AAD79}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard Principal (vue comparative multi-cryptos)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Candara' fontsize='36' italic='true'>Dashboard Principal</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='Paramètres' name='Parameters' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='sélection de la crypto' datatype='string' name='[Paramètre 1614371867717646]' param-domain-type='list' role='measure' type='nominal' value='&quot;eth&quot;'>
+          <calculation class='tableau' formula='&quot;eth&quot;' />
+          <members>
+            <member value='&quot;bnb&quot;' />
+            <member value='&quot;btc&quot;' />
+            <member value='&quot;eth&quot;' />
+            <member value='&quot;figr_heloc&quot;' />
+            <member value='&quot;hype&quot;' />
+            <member value='&quot;sol&quot;' />
+            <member value='&quot;trx&quot;' />
+            <member value='&quot;usdc&quot;' />
+            <member value='&quot;usdt&quot;' />
+            <member value='&quot;xrp&quot;' />
+          </members>
+        </column>
+        <column caption='indicateur à afficher' datatype='string' name='[Paramètre 1614371868618768]' param-domain-type='list' role='measure' type='nominal' value='&quot;Current Price&quot;'>
+          <calculation class='tableau' formula='&quot;Current Price&quot;' />
+          <members>
+            <member value='&quot;Current Price&quot;' />
+            <member value='&quot;Total Volume&quot;' />
+            <member value='&quot;Market Cap&quot;' />
+          </members>
+        </column>
+        <column caption='plage de dates' datatype='date' name='[Paramètre 1614371889598483]' param-domain-type='range' role='measure' type='quantitative' value='#2026-06-19#'>
+          <calculation class='tableau' formula='#2026-06-19#' />
+        </column>
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='115' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='8375' id='116' type-v2='title' w='98400' x='800' y='1000'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='89625' id='107' param='horz' type-v2='layout-flow' w='98400' x='800' y='9375'>
+              <zone h='89625' id='97' param='horz' type-v2='layout-flow' w='82800' x='800' y='9375'>
+                <zone h='89625' id='21' param='vert' type-v2='layout-flow' w='82800' x='800' y='9375'>
+                  <zone fixed-size='952' h='89625' id='19' is-fixed='true' param='vert' type-v2='layout-flow' w='82800' x='800' y='9375'>
+                    <zone h='89625' id='14' param='horz' type-v2='layout-flow' w='82800' x='800' y='9375'>
+                      <zone h='89625' id='3' type-v2='layout-basic' w='82800' x='800' y='9375'>
+                        <zone h='12612' id='87' name='KPI 1 :Prix Actuel' w='21369' x='800' y='9375'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='12612' id='89' name='KPI 3 : Volume Total' w='22048' x='40851' y='9375'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='39437' id='94' name='variation journalière par crypto et par semaine' w='40049' x='800' y='59563'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='37576' id='95' name=' évolution du prix de clôture dans le temps par crypto' w='40049' x='800' y='21987'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='38507' id='99' name='corrélation volume vs variation de prix ' w='42751' x='40849' y='60493'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='12612' id='101' name='KPI 2 :Variation 24h' w='18682' x='22169' y='9375'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='12612' id='102' name='KPI 4 : Market Cap' w='20701' x='62899' y='9375'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='38506' id='105' name=' top 10 cryptos par volume moyen sur la période sélectionnée' w='42751' x='40849' y='21987'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                    </zone>
+                  </zone>
+                </zone>
+              </zone>
+              <zone fixed-size='156' h='89625' id='112' is-fixed='true' type-v2='layout-basic' w='15600' x='83600' y='9375'>
+                <zone h='9373' id='106' param='vert' type-v2='layout-flow' w='15600' x='83600' y='9375'>
+                  <zone h='8125' id='108' name=' top 10 cryptos par volume moyen sur la période sélectionnée' pane-specification-id='0' param='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' type-v2='color' w='15600' x='83600' y='9375'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+                <zone h='80252' id='113' param='vert' type-v2='layout-flow' w='15600' x='83600' y='18748'>
+                  <zone fixed-size='239' h='26750' id='109' is-fixed='true' mode='compact' param='[Parameters].[Paramètre 1614371868618768]' type-v2='paramctrl' w='15600' x='83600' y='18748'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='493' h='26750' id='110' is-fixed='true' mode='datetime' param='[Parameters].[Paramètre 1614371889598483]' type-v2='paramctrl' w='15600' x='83600' y='45498'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='528' h='26752' id='111' is-fixed='true' mode='compact' param='[Parameters].[Paramètre 1614371867717646]' type-v2='paramctrl' w='15600' x='83600' y='72248'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Candara' fontsize='36' italic='true'>Dashboard Principal</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='1900' minheight='1900' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='250' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='249' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+                <zone h='8375' id='116' type-v2='title' w='98400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='93' h='12612' id='87' is-fixed='true' name='KPI 1 :Prix Actuel' w='21369' x='800' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='93' h='12612' id='101' is-fixed='true' name='KPI 2 :Variation 24h' w='18682' x='22169' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='93' h='12612' id='89' is-fixed='true' name='KPI 3 : Volume Total' w='22048' x='40851' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='93' h='12612' id='102' is-fixed='true' name='KPI 4 : Market Cap' w='20701' x='62899' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='239' h='26750' id='109' mode='compact' param='[Parameters].[Paramètre 1614371868618768]' type-v2='paramctrl' w='15600' x='83600' y='18748'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='37576' id='95' is-fixed='true' name=' évolution du prix de clôture dans le temps par crypto' w='40049' x='800' y='21987'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='38506' id='105' is-fixed='true' name=' top 10 cryptos par volume moyen sur la période sélectionnée' w='42751' x='40849' y='21987'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8125' id='108' name=' top 10 cryptos par volume moyen sur la période sélectionnée' pane-specification-id='0' param='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' type-v2='color' w='15600' x='83600' y='9375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='493' h='26750' id='110' mode='datetime' param='[Parameters].[Paramètre 1614371889598483]' type-v2='paramctrl' w='15600' x='83600' y='45498'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='39437' id='94' is-fixed='true' name='variation journalière par crypto et par semaine' w='40049' x='800' y='59563'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='38507' id='99' is-fixed='true' name='corrélation volume vs variation de prix ' w='42751' x='40849' y='60493'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='528' h='26752' id='111' mode='compact' param='[Parameters].[Paramètre 1614371867717646]' type-v2='paramctrl' w='15600' x='83600' y='72248'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{3097B511-8FC6-4727-B6D5-A2AD9CEAD8C7}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name=' évolution du prix de clôture dans le temps par crypto'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='300'>
+            <card pane-specification-id='0' param='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]' type='color' />
+            <card mode='compact' param='[Parameters].[Paramètre 1614371868618768]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2E2E1279-80B1-41B8-85CE-DDDAB38402ED}' />
+    </window>
+    <window class='worksheet' name=' top 10 cryptos par volume moyen sur la période sélectionnée'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='170'>
+            <card param='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[sum:PRICE_CHANGE_PERCENTAGE_24H:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{761698C5-3A20-436D-82D7-5C589DD617C5}' />
+    </window>
+    <window class='worksheet' name='variation journalière par crypto et par semaine'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{BC7BEC3F-CA48-4650-B2D3-3DE7ADAD0DDD}' />
+    </window>
+    <window class='worksheet' name='corrélation volume vs variation de prix '>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0mjg3uf1eofotc1g6rfof1p3z4ze].[none:NAME:nk]' type='filter' />
+            <card mode='compact' param='[Parameters].[Paramètre 1614371868618768]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B34C1C1F-DC4F-4D13-9957-177E398384B5}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard Principal (vue comparative multi-cryptos)'>
+      <viewpoints>
+        <viewpoint name=' top 10 cryptos par volume moyen sur la période sélectionnée' />
+        <viewpoint name=' évolution du prix de clôture dans le temps par crypto'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='KPI 1 :Prix Actuel' />
+        <viewpoint name='KPI 2 :Variation 24h' />
+        <viewpoint name='KPI 3 : Volume Total' />
+        <viewpoint name='KPI 4 : Market Cap' />
+        <viewpoint name='corrélation volume vs variation de prix '>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='variation journalière par crypto et par semaine' />
+      </viewpoints>
+      <active id='109' />
+      <simple-id uuid='{CF68AB4E-C0BB-4EF1-A0B7-C1F9CBFC7E4D}' />
+    </window>
+    <window class='dashboard' name='Dashboard Détail'>
+      <viewpoints>
+        <viewpoint name=' évolution du prix de clôture dans le temps par crypto'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Feuille 9' />
+        <viewpoint name='KPI 1 :Prix Actuel' />
+        <viewpoint name='KPI 2 :Variation 24h' />
+        <viewpoint name='KPI 3 : Volume Total' />
+        <viewpoint name='KPI 4 : Market Cap' />
+        <viewpoint name='Variation journalière'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{038B33AF-54C0-4086-8B82-830A4D792E29}' />
+    </window>
+    <window class='worksheet' name='KPI 1 :Prix Actuel'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B2A386D7-62A4-4047-A25F-A97110510D31}' />
+    </window>
+    <window class='worksheet' name='KPI 2 :Variation 24h'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{165438C2-0AB1-4622-AC53-A4149632A1CF}' />
+    </window>
+    <window class='worksheet' name='KPI 3 : Volume Total'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0BD59293-7AAE-40F9-A749-56385B6F0BB5}' />
+    </window>
+    <window class='worksheet' name='KPI 4 : Market Cap'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B0C330BF-FA90-49D8-ACD1-7DE7719DC944}' />
+    </window>
+    <window class='worksheet' name='Feuille 9'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='compact' param='[Parameters].[Paramètre 1614371868618768]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0FD6D3D3-84F3-4A82-9BAB-1BCCD12EAD98}' />
+    </window>
+    <window class='worksheet' name='Variation journalière'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C949FF77-AEF4-4F0D-B90C-1E341181CAC5}' />
+    </window>
+  </windows>
+</workbook>
