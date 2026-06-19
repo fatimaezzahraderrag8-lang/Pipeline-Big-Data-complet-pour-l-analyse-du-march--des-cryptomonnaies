@@ -37,16 +37,16 @@
           <member value='&quot;xrp&quot;' />
         </members>
       </column>
-      <column caption='indicateur à afficher' datatype='string' name='[Paramètre 1614371868618768]' param-domain-type='list' role='measure' type='nominal' value='&quot;Current Price&quot;'>
-        <calculation class='tableau' formula='&quot;Current Price&quot;' />
+      <column caption='indicateur à afficher' datatype='string' name='[Paramètre 1614371868618768]' param-domain-type='list' role='measure' type='nominal' value='&quot;Market Cap&quot;'>
+        <calculation class='tableau' formula='&quot;Market Cap&quot;' />
         <members>
           <member value='&quot;Current Price&quot;' />
           <member value='&quot;Total Volume&quot;' />
           <member value='&quot;Market Cap&quot;' />
         </members>
       </column>
-      <column caption='plage de dates' datatype='date' name='[Paramètre 1614371889598483]' param-domain-type='range' role='measure' type='quantitative' value='#2026-06-19#'>
-        <calculation class='tableau' formula='#2026-06-19#' />
+      <column caption='plage de dates' datatype='date' name='[Paramètre 1614371889598483]' param-domain-type='range' role='measure' type='quantitative' value='#2026-06-18#'>
+        <calculation class='tableau' formula='#2026-06-18#' />
       </column>
     </datasource>
     <datasource caption='DIM_CRYPTO (CRYPTO_DB.DIM_CRYPTO)+ (ANALYTICS)' inline='true' name='federated.0mjg3uf1eofotc1g6rfof1p3z4ze' version='18.1'>
@@ -1386,16 +1386,16 @@
             <member value='&quot;xrp&quot;' />
           </members>
         </column>
-        <column caption='indicateur à afficher' datatype='string' name='[Paramètre 1614371868618768]' param-domain-type='list' role='measure' type='nominal' value='&quot;Current Price&quot;'>
-          <calculation class='tableau' formula='&quot;Current Price&quot;' />
+        <column caption='indicateur à afficher' datatype='string' name='[Paramètre 1614371868618768]' param-domain-type='list' role='measure' type='nominal' value='&quot;Market Cap&quot;'>
+          <calculation class='tableau' formula='&quot;Market Cap&quot;' />
           <members>
             <member value='&quot;Current Price&quot;' />
             <member value='&quot;Total Volume&quot;' />
             <member value='&quot;Market Cap&quot;' />
           </members>
         </column>
-        <column caption='plage de dates' datatype='date' name='[Paramètre 1614371889598483]' param-domain-type='range' role='measure' type='quantitative' value='#2026-06-19#'>
-          <calculation class='tableau' formula='#2026-06-19#' />
+        <column caption='plage de dates' datatype='date' name='[Paramètre 1614371889598483]' param-domain-type='range' role='measure' type='quantitative' value='#2026-06-18#'>
+          <calculation class='tableau' formula='#2026-06-18#' />
         </column>
       </datasource-dependencies>
       <zones>
@@ -1679,16 +1679,16 @@
             <member value='&quot;xrp&quot;' />
           </members>
         </column>
-        <column caption='indicateur à afficher' datatype='string' name='[Paramètre 1614371868618768]' param-domain-type='list' role='measure' type='nominal' value='&quot;Current Price&quot;'>
-          <calculation class='tableau' formula='&quot;Current Price&quot;' />
+        <column caption='indicateur à afficher' datatype='string' name='[Paramètre 1614371868618768]' param-domain-type='list' role='measure' type='nominal' value='&quot;Market Cap&quot;'>
+          <calculation class='tableau' formula='&quot;Market Cap&quot;' />
           <members>
             <member value='&quot;Current Price&quot;' />
             <member value='&quot;Total Volume&quot;' />
             <member value='&quot;Market Cap&quot;' />
           </members>
         </column>
-        <column caption='plage de dates' datatype='date' name='[Paramètre 1614371889598483]' param-domain-type='range' role='measure' type='quantitative' value='#2026-06-19#'>
-          <calculation class='tableau' formula='#2026-06-19#' />
+        <column caption='plage de dates' datatype='date' name='[Paramètre 1614371889598483]' param-domain-type='range' role='measure' type='quantitative' value='#2026-06-18#'>
+          <calculation class='tableau' formula='#2026-06-18#' />
         </column>
       </datasource-dependencies>
       <zones>
@@ -2079,7 +2079,7 @@
       </cards>
       <simple-id uuid='{B34C1C1F-DC4F-4D13-9957-177E398384B5}' />
     </window>
-    <window class='dashboard' maximized='true' name='Dashboard Principal (vue comparative multi-cryptos)'>
+    <window class='dashboard' name='Dashboard Principal (vue comparative multi-cryptos)'>
       <viewpoints>
         <viewpoint name=' top 10 cryptos par volume moyen sur la période sélectionnée' />
         <viewpoint name=' évolution du prix de clôture dans le temps par crypto'>
@@ -2094,7 +2094,7 @@
         </viewpoint>
         <viewpoint name='variation journalière par crypto et par semaine' />
       </viewpoints>
-      <active id='109' />
+      <active id='-1' />
       <simple-id uuid='{CF68AB4E-C0BB-4EF1-A0B7-C1F9CBFC7E4D}' />
     </window>
     <window class='dashboard' name='Dashboard Détail'>
@@ -2234,7 +2234,7 @@
       </cards>
       <simple-id uuid='{0FD6D3D3-84F3-4A82-9BAB-1BCCD12EAD98}' />
     </window>
-    <window class='worksheet' name='Variation journalière'>
+    <window class='worksheet' maximized='true' name='Variation journalière'>
       <cards>
         <edge name='left'>
           <strip size='160'>
