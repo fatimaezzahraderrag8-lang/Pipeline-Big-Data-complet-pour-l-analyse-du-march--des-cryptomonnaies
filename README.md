@@ -238,6 +238,7 @@ http://localhost:9000
 Projet réalisé dans le cadre de la formation Data Analyst / Data Engineer.
 
 # 📊 Dashboard
-<img width="1005" height="798" alt="image" src="https://github.com/user-attachments/assets/e5cac4ed-08f6-4251-b66d-144047b087ae" />
 
-<img width="994" height="796" alt="image" src="https://github.com/user-attachments/assets/94dfb0f7-7fd1-4461-9aaa-daa34f935c82" />
+<img width="997" height="801" alt="image" src="https://github.com/user-attachments/assets/6a073eaf-578d-4358-b026-e67d148a7ada" />
+
+<img width="1002" height="799" alt="image" src="https://github.com/user-attachments/assets/3a4a74f7-a044-4b6b-b154-55964b646aeb" />
