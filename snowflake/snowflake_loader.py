@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 import snowflake.connector
 from snowflake.connector.pandas_tools import write_pandas
 
+# LOAD ENV VARIABLES
 load_dotenv()
 
-# CHECK ENV VARIABLES
 required_vars = [
     "SNOWFLAKE_USER",
     "SNOWFLAKE_PASSWORD",
@@ -16,11 +16,12 @@ required_vars = [
     "SNOWFLAKE_SCHEMA",
 ]
 
-for v in required_vars:
-    if not os.getenv(v):
-        raise ValueError(f"Missing env var: {v}")
+for var in required_vars:
+    if not os.getenv(var):
+        raise ValueError(f"Missing environment variable: {var}")
 
-# CONNECTION
+# CONNECT TO SNOWFLAKE
+
 conn = snowflake.connector.connect(
     user=os.getenv("SNOWFLAKE_USER"),
     password=os.getenv("SNOWFLAKE_PASSWORD"),
@@ -31,12 +32,14 @@ conn = snowflake.connector.connect(
 )
 
 cur = conn.cursor()
+
 print("Connected to Snowflake")
 
 # CREATE TABLES
+
 cur.execute("""
 CREATE TABLE IF NOT EXISTS DIM_CRYPTO (
-    CRYPTO_ID STRING,
+    CRYPTO_ID STRING PRIMARY KEY,
     NAME STRING,
     SYMBOL STRING
 )
@@ -44,8 +47,8 @@ CREATE TABLE IF NOT EXISTS DIM_CRYPTO (
 
 cur.execute("""
 CREATE TABLE IF NOT EXISTS DIM_DATE (
-    DATE_ID NUMBER UNIQUE,
-    FULL_DATE DATE ,
+    DATE_ID NUMBER PRIMARY KEY,
+    FULL_DATE DATE,
     YEAR NUMBER,
     MONTH NUMBER,
     DAY NUMBER
@@ -54,21 +57,27 @@ CREATE TABLE IF NOT EXISTS DIM_DATE (
 
 cur.execute("""
 CREATE TABLE IF NOT EXISTS FACT_MARKET (
-    FACT_ID NUMBER UNIQUE,
-    CRYPTO_ID STRING,
-    DATE_ID NUMBER,
+    FACT_ID NUMBER PRIMARY KEY,
+
+    CRYPTO_ID STRING NOT NULL,
+    DATE_ID NUMBER NOT NULL,
+
     CURRENT_PRICE FLOAT,
     HIGH_24H FLOAT,
     LOW_24H FLOAT,
     TOTAL_VOLUME FLOAT,
     MARKET_CAP FLOAT,
-    PRICE_CHANGE_PERCENTAGE_24H FLOAT
+    PRICE_CHANGE_PERCENTAGE_24H FLOAT,
+
+    CONSTRAINT UK_CRYPTO_DATE
+        UNIQUE (CRYPTO_ID, DATE_ID)
 )
 """)
 
-print("Tables created")
+print("Tables created successfully")
 
-# PATHS
+# FILE PATHS
+
 BASE_PATH = "/opt/airflow/project/gold"
 
 files = {
@@ -78,6 +87,7 @@ files = {
 }
 
 # LOAD FUNCTION
+
 def load_table(table_name, file_path):
 
     if not os.path.exists(file_path):
@@ -87,30 +97,88 @@ def load_table(table_name, file_path):
     df = pd.read_parquet(file_path)
 
     if df.empty:
-        print(f"EMPTY FILE: {file_path}")
+        print(f"{table_name}: Empty file")
         return
 
-    print(f"\n{table_name} RAW DATA")
-    print(df.head())
-
-    # CLEANING
+    # Normalize column names
     df.columns = df.columns.str.upper()
-    df = df.drop(columns=["ID"], errors="ignore")
 
-    if "FULL_DATE" in df.columns:
-        df["FULL_DATE"] = pd.to_datetime(df["FULL_DATE"], errors="coerce").dt.date
+    # Remove unnecessary columns
+    df = df.drop(
+        columns=["ID", "INDEX", "UNNAMED: 0"],
+        errors="ignore"
+    )
+
+    # DIM_CRYPTO
+
+    if table_name == "DIM_CRYPTO":
+
+        df = df[["CRYPTO_ID", "NAME", "SYMBOL"]]
+
+        df = df.drop_duplicates(
+            subset=["CRYPTO_ID"]
+        )
+
+    # DIM_DATE
+
+    elif table_name == "DIM_DATE":
+
+        df["FULL_DATE"] = pd.to_datetime(
+            df["FULL_DATE"],
+            errors="coerce"
+        ).dt.date
+
+        df = df[
+            [
+                "DATE_ID",
+                "FULL_DATE",
+                "YEAR",
+                "MONTH",
+                "DAY"
+            ]
+        ]
+
+        df = df.drop_duplicates(
+            subset=["DATE_ID"]
+        )
+
+    # FACT_MARKET
+
+    elif table_name == "FACT_MARKET":
+
+        df = df[
+            [
+                "FACT_ID",
+                "CRYPTO_ID",
+                "DATE_ID",
+                "CURRENT_PRICE",
+                "HIGH_24H",
+                "LOW_24H",
+                "TOTAL_VOLUME",
+                "MARKET_CAP",
+                "PRICE_CHANGE_PERCENTAGE_24H"
+            ]
+        ]
+
+        df = df.drop_duplicates(
+            subset=["CRYPTO_ID", "DATE_ID"]
+        )
 
     df = df.dropna(how="all")
 
-    print(f"\n{table_name} CLEAN DATA")
+    print(f"\nLoading {table_name}")
     print(df.head())
 
-    # LOAD TO SNOWFLAKE
     try:
+
+        # Empty table before loading
+        cur.execute(f"TRUNCATE TABLE {table_name}")
+
         success, nchunks, nrows, _ = write_pandas(
             conn,
             df,
-            table_name
+            table_name,
+            auto_create_table=False
         )
 
         if success:
@@ -119,13 +187,26 @@ def load_table(table_name, file_path):
             print(f"Failed loading {table_name}")
 
     except Exception as e:
-        print(f"ERROR in {table_name}: {e}")
+        print(f"Error loading {table_name}: {e}")
 
-# EXECUTION
-for table, path in files.items():
-    load_table(table, path)
+# LOAD TABLES IN ORDER
 
-# VALIDATION (FIXED)
+load_table(
+    "DIM_CRYPTO",
+    files["DIM_CRYPTO"]
+)
+
+load_table(
+    "DIM_DATE",
+    files["DIM_DATE"]
+)
+
+load_table(
+    "FACT_MARKET",
+    files["FACT_MARKET"]
+)
+
+# VALIDATION
 cur.execute("SELECT COUNT(*) FROM DIM_CRYPTO")
 print("DIM_CRYPTO:", cur.fetchone()[0])
 
@@ -135,7 +216,8 @@ print("DIM_DATE:", cur.fetchone()[0])
 cur.execute("SELECT COUNT(*) FROM FACT_MARKET")
 print("FACT_MARKET:", cur.fetchone()[0])
 
+# CLOSE CONNECTION
 cur.close()
 conn.close()
 
-print("DONE")
+print("Snowflake Load Finished Successfully")

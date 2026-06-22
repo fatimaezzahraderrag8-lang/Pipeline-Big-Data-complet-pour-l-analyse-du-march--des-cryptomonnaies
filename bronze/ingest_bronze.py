@@ -53,8 +53,8 @@ def fetch():
             params={
                 "vs_currency": "usd",
                 "order": "market_cap_desc",
-                "per_page": 10,
-                "page": 1,
+                "per_page": 100,
+                "page": 5,
                 "sparkline": "false"
             },
             timeout=30
